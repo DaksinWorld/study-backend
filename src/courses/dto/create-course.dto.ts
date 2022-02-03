@@ -14,10 +14,10 @@ export class CreateCourseDto {
     fieldOfCourse: string;
 
     @IsString()
-    university: string;
+    universities: string;
 
     @IsString()
-    city: string;
+    cities: string;
 
     @IsString()
     price: string;

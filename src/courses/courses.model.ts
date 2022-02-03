@@ -18,7 +18,7 @@ export class CourseModel {
     fieldOfCourse: string;
 
     @Prop()
-    university: string;
+    universities: string;
 
     @Prop()
     price: string;
@@ -27,7 +27,7 @@ export class CourseModel {
     deadline: string;
 
     @Prop()
-    city: string;
+    cities: string;
 
     @Prop()
     startDate: string;

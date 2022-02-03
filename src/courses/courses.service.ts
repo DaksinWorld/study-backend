@@ -25,10 +25,6 @@ export class CoursesService {
         return this.productModel.findById(id).exec();
     }
 
-    /*async findByCategory(dto: FindByCategoryDto){
-      return this.productModel.find({fieldOfStudy: dto.fieldOfStudy, degree: dto.degree})
-    }*/
-
     async deleteById(id: string) {
         return this.productModel.findByIdAndDelete(id).exec();
     }

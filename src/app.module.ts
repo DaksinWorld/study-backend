@@ -7,6 +7,8 @@ import {ConfigModule, ConfigService} from "@nestjs/config";
 import { ProductModule } from './product/product.module';
 import { FilesModule } from './files/files.module';
 import { CoursesModule } from './courses/courses.module';
+import { WorkersModule } from './workers/workers.module';
+import {FilesService} from "./files/files.service";
 
 @Module({
   imports: [
@@ -15,9 +17,10 @@ import { CoursesModule } from './courses/courses.module';
       MongooseModule.forRoot('mongodb+srv://admin:so5cGuwdf0yIghyi@cluster0.b28ta.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'),
       ProductModule,
       FilesModule,
-      CoursesModule
+      CoursesModule,
+      WorkersModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, FilesService],
 })
 export class AppModule {}

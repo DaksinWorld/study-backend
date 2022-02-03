@@ -22,7 +22,6 @@ import { FileElementResponse } from "../files/dto/file-element.reposonse";
 import { MFile } from "../files/mfile.class";
 import { JwtAuthGuard } from "../auth/guards/jwt.guard";
 import { FilesService } from "../files/files.service";
-import {FindByCategoryDto} from "./dto/find-by-category.dto";
 
 @Controller('product')
 export class ProductController {
@@ -62,12 +61,6 @@ export class ProductController {
     }
     return product;
   }
-
-  /*@UsePipes(new ValidationPipe())
-  @Post('findCategory')
-  async findByCategory(@Body() findByCategory: FindByCategoryDto) {
-    return this.productService.findByCategory(findByCategory)
-  }*/
 
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe())
