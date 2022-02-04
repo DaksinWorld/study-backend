@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
-import { IsNumber, IsString } from "class-validator";
 
 export type ProductDocument = ProductModel & Document
 
@@ -35,6 +34,9 @@ export class ProductModel {
 
     @Prop()
     foundationCoursePrice: number;
+
+    @Prop()
+    createdAt: string;
 
     @Prop()
     images: [];

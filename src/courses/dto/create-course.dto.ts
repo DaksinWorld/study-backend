@@ -27,4 +27,7 @@ export class CreateCourseDto {
 
     @IsString()
     startDate: string;
+
+    @IsString()
+    createdAt: string;
 }

@@ -9,6 +9,7 @@ import { FilesModule } from './files/files.module';
 import { CoursesModule } from './courses/courses.module';
 import { WorkersModule } from './workers/workers.module';
 import {FilesService} from "./files/files.service";
+import { UnivModule } from './univ/univ.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import {FilesService} from "./files/files.service";
       ProductModule,
       FilesModule,
       CoursesModule,
-      WorkersModule
+      WorkersModule,
+      UnivModule
   ],
   controllers: [AppController],
   providers: [AppService, FilesService],

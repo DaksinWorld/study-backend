@@ -33,6 +33,9 @@ export class CourseModel {
     startDate: string;
 
     @Prop()
+    createdAt: string;
+
+    @Prop()
     images: [];
 }
 

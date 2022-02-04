@@ -31,4 +31,7 @@ export class CreateProductDto {
   @IsString()
   foundationCoursePrice: string;
 
+  @IsString()
+  createdAt: string;
+
 }
