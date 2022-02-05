@@ -35,6 +35,11 @@ export class UnivService {
     async findPrograms(dto: FindProgramsDto) {
         return this.univModel.aggregate([
             {
+                $match: {
+                    name: dto.university
+                }
+            },
+            {
                 $lookup: {
                     from: 'coursemodels',
                     localField: 'name',
