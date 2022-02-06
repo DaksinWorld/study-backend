@@ -61,12 +61,6 @@ export class UnivController {
         return deletedWorker;
     }
 
-    @UsePipes(new ValidationPipe())
-    @Get('findPrograms')
-    async findPrograms(@Body() dto: FindProgramsDto) {
-        return this.univService.findPrograms(dto);
-    }
-
     @UseGuards(JwtAuthGuard)
     @UsePipes(new ValidationPipe())
     @Patch(':id')

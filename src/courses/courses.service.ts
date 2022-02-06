@@ -3,6 +3,7 @@ import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {CourseModel} from "./courses.model";
 import {CreateCourseDto} from "./dto/create-course.dto";
+import {FindProgramsDto} from "./dto/find-programs.dto";
 
 @Injectable()
 export class CoursesService {
@@ -35,5 +36,15 @@ export class CoursesService {
             ...dto,
         }
         return this.productModel.findByIdAndUpdate(id, obj, { new: true }).exec();
+    }
+
+    async findByCategory(dto: FindProgramsDto) {
+        return this.productModel.aggregate([
+            {
+                $match: {
+                    universities: dto.category
+                }
+            }
+        ]).exec()
     }
 }

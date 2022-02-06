@@ -22,6 +22,7 @@ import { FilesService } from "../files/files.service";
 import {CoursesService} from "./courses.service";
 import {CreateCourseDto} from "./dto/create-course.dto";
 import {PRODUCT_NOT_FOUND_ERROR} from "../product/product.constants";
+import {FindProgramsDto} from "./dto/find-programs.dto";
 
 @Controller('courses')
 export class CoursesController {
@@ -71,6 +72,12 @@ export class CoursesController {
             throw new NotFoundException(PRODUCT_NOT_FOUND_ERROR);
         }
         return deletedProduct;
+    }
+
+    @UsePipes(new ValidationPipe())
+    @Post('findPrograms')
+    async findProgram(@Body() dto: FindProgramsDto) {
+        return this.productService.findByCategory(dto)
     }
 
     @UseGuards(JwtAuthGuard)

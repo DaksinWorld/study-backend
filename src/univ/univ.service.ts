@@ -32,29 +32,6 @@ export class UnivService {
         return this.univModel.findByIdAndDelete(id).exec();
     }
 
-    async findPrograms(dto: FindProgramsDto) {
-        return this.univModel.aggregate([
-            {
-                $match: {
-                    name: dto.university
-                }
-            },
-            {
-                $lookup: {
-                    from: 'coursemodels',
-                    localField: 'name',
-                    foreignField: 'universities',
-                    as: 'programs'
-                }
-            },
-            {
-                $addFields: {
-                    programsCount: {$size: '$programs'}
-                }
-            }
-        ]).exec()
-    }
-
     async updateById(id: string, dto: CreateUnivDto, images) {
         const obj = {
             images,
