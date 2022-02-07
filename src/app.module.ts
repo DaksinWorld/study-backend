@@ -10,6 +10,8 @@ import { CoursesModule } from './courses/courses.module';
 import { WorkersModule } from './workers/workers.module';
 import {FilesService} from "./files/files.service";
 import { UnivModule } from './univ/univ.module';
+import {ServeStaticModule} from "@nestjs/serve-static";
+import {path} from 'app-root-path'
 
 @Module({
   imports: [
@@ -20,7 +22,11 @@ import { UnivModule } from './univ/univ.module';
       FilesModule,
       CoursesModule,
       WorkersModule,
-      UnivModule
+      UnivModule,
+      ServeStaticModule.forRoot({
+          rootPath: `${path}/client`,
+          serveRoot: '/'
+      })
   ],
   controllers: [AppController],
   providers: [AppService, FilesService],
