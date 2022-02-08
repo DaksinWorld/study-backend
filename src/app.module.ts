@@ -12,6 +12,8 @@ import {FilesService} from "./files/files.service";
 import { UnivModule } from './univ/univ.module';
 import {ServeStaticModule} from "@nestjs/serve-static";
 import {path} from 'app-root-path'
+import {AdmissionModule} from "./admission/admission.module";
+import { RequestModule } from './request/request.module';
 
 @Module({
   imports: [
@@ -23,10 +25,12 @@ import {path} from 'app-root-path'
       CoursesModule,
       WorkersModule,
       UnivModule,
+      AdmissionModule,
       ServeStaticModule.forRoot({
           rootPath: `${path}/client`,
           serveRoot: '/'
-      })
+      }),
+      RequestModule
   ],
   controllers: [AppController],
   providers: [AppService, FilesService],

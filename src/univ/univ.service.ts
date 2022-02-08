@@ -1,11 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import {InjectModel} from "@nestjs/mongoose";
-import {WorkersModel} from "../workers/workers.model";
 import {Model} from "mongoose";
-import {CreateWorkerDto} from "../workers/dto/create-worker.dto";
 import {UnivModel} from "./univ.model";
 import {CreateUnivDto} from "./dto/create-univ.dto";
-import {FindProgramsDto} from "./dto/find-programs.dto";
 
 @Injectable()
 export class UnivService {
