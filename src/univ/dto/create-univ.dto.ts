@@ -2,10 +2,16 @@ import {IsString} from "class-validator";
 
 export class CreateUnivDto{
     @IsString()
-    name: string;
+    nameEn: string;
 
     @IsString()
-    description: string;
+    nameSp: string;
+
+    @IsString()
+    descriptionEn: string;
+
+    @IsString()
+    descriptionSp: string;
 
     @IsString()
     location: string;

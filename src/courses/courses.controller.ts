@@ -74,12 +74,6 @@ export class CoursesController {
         return deletedProduct;
     }
 
-    @UsePipes(new ValidationPipe())
-    @Post('findPrograms')
-    async findProgram(@Body() dto: FindProgramsDto) {
-        return this.productService.findByCategory(dto)
-    }
-
     @UseGuards(JwtAuthGuard)
     @UsePipes(new ValidationPipe())
     @Patch(':id')

@@ -11,13 +11,12 @@ import {
 } from '@nestjs/common';
 import {WorkersService} from "./workers.service";
 import {JwtAuthGuard} from "../auth/guards/jwt.guard";
-import {FileInterceptor} from "@nestjs/platform-express";
-import {CreateProductDto} from "../product/dto/create-product.dto";
-import {FilesService} from "../files/files.service";
-import {FileElementResponse} from "../files/dto/file-element.reposonse";
-import {MFile} from "../files/mfile.class";
 import {CreateWorkerDto} from "./dto/create-worker.dto";
 import {WORKER_WASNT_FOUND} from "./workers.constants";
+import {FilesService} from "../files/files.service";
+import {FileInterceptor} from "@nestjs/platform-express";
+import {FileElementResponse} from "../files/dto/file-element.reposonse";
+import {MFile} from "../files/mfile.class";
 
 @Controller('workers')
 export class WorkersController {

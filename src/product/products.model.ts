@@ -6,40 +6,46 @@ export type ProductDocument = ProductModel & Document
 @Schema()
 export class ProductModel {
     @Prop()
-    programs: string;
+    programsEn: string
 
     @Prop()
-    degree: string;
+    programsSp: string
 
     @Prop()
-    fieldOfStudy: string;
+    degreeEn: string
 
     @Prop()
-    name: string;
+    degreeSp: string
+
+    @Prop()
+    fieldOfStudyEn: string
+
+    @Prop()
+    fieldOfStudySp: string
+
+    @Prop()
+    nameEn: string
+
+    @Prop()
+    nameSp: string
 
     @Prop()
     location: string;
 
     @Prop()
-    description: string;
-
-    @Prop()
     language: string;
 
     @Prop()
-    price: number;
+    price: string;
 
     @Prop()
-    duration: number;
+    duration: string;
 
     @Prop()
-    foundationCoursePrice: number;
+    foundationCoursePrice: string;
 
     @Prop()
     createdAt: string;
-
-    @Prop()
-    images: [];
 }
 
 export const ProductSchema = SchemaFactory.createForClass(ProductModel)

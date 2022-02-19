@@ -6,7 +6,10 @@ export type CourseDocument = CourseModel & Document
 @Schema()
 export class CourseModel {
     @Prop()
-    name: string;
+    nameEn: string;
+
+    @Prop()
+    nameSp: string;
 
     @Prop()
     location: string;
@@ -15,19 +18,22 @@ export class CourseModel {
     duration: number;
 
     @Prop()
-    fieldOfCourse: string;
+    fieldOfCourseEn: string;
 
     @Prop()
-    universities: string;
+    fieldOfCourseSp: string;
+
+    @Prop()
+    universitiesEn: string;
+
+    @Prop()
+    universitiesSp: string;
 
     @Prop()
     price: string;
 
     @Prop()
     deadline: string;
-
-    @Prop()
-    cities: string;
 
     @Prop()
     startDate: string;

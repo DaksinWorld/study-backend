@@ -3,31 +3,24 @@ import {
   Controller,
   Delete,
   Get,
-  HttpCode,
   NotFoundException,
   Param,
   Patch,
-  Post, Query, Req,
-  UploadedFile,
+  Post,
   UseGuards,
-  UseInterceptors,
   UsePipes,
   ValidationPipe
 } from "@nestjs/common";
 import { ProductService } from "./product.service";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { PRODUCT_NOT_FOUND_ERROR } from "./product.constants";
-import { FileInterceptor } from "@nestjs/platform-express";
-import { FileElementResponse } from "../files/dto/file-element.reposonse";
-import { MFile } from "../files/mfile.class";
 import { JwtAuthGuard } from "../auth/guards/jwt.guard";
-import { FilesService } from "../files/files.service";
+import {FindByCategoryDto} from "./dto/find-by-category.dto";
 
 @Controller('product')
 export class ProductController {
   constructor(
     private readonly productService: ProductService,
-    private readonly filesService: FilesService
   ) {
   }
 
@@ -37,12 +30,9 @@ export class ProductController {
     return 'success'
   }
 
-  @UseGuards(JwtAuthGuard)
   @Post('create')
-  @UseInterceptors(FileInterceptor('file'))
-  async create(@Body() dto: CreateProductDto, @UploadedFile() file: Express.Multer.File) {
-    const images = await this.uploadFile(file)
-    return this.productService.create(dto, images);
+  async create(@Body() dto: CreateProductDto) {
+    return this.productService.create(dto)
   }
 
   @UsePipes(new ValidationPipe())
@@ -51,6 +41,11 @@ export class ProductController {
     return this.productService.getAll()
   }
 
+  @UsePipes(new ValidationPipe())
+  @Post('findPrograms')
+  async findByPrograms(@Body() dto: FindByCategoryDto) {
+    return this.productService.findByCategory(dto)
+  }
 
   @UsePipes(new ValidationPipe())
   @Get('find/:id')
@@ -76,32 +71,12 @@ export class ProductController {
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe())
   @Patch(':id')
-  @UseInterceptors(FileInterceptor('file'))
-  async updateById(@Param('id') id: string, @Body() dto: CreateProductDto, @UploadedFile() file: Express.Multer.File) {
-    console.log(file)
-    const images = await this.uploadFile(file)
-    const updatedProduct = await this.productService.updateById(id, dto, images)
+  async updateById(@Param('id') id: string, @Body() dto: CreateProductDto) {
+    const updatedProduct = await this.productService.updateById(id, dto)
     if (!updatedProduct) {
       throw new NotFoundException(PRODUCT_NOT_FOUND_ERROR);
     }
     return updatedProduct;
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Post('upload')
-  @HttpCode(200)
-  @UseGuards(JwtAuthGuard)
-  @UseInterceptors(FileInterceptor('file'))
-  async uploadFile(@UploadedFile() file: Express.Multer.File): Promise<FileElementResponse[]> {
-    const saveArray: MFile[] = [new MFile(file)];
-    if (file.mimetype.includes('image')) {
-      const buffer = await this.filesService.convertToWebP(file.buffer);
-      saveArray.push(new MFile({
-        originalname: `${file.originalname.split('.')[0]}.webp`,
-        buffer
-      }));
-    }
-    return this.filesService.saveFiles(saveArray);
   }
 
 }

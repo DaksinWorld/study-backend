@@ -6,10 +6,16 @@ export type UnivDocument = UnivModel & Document
 @Schema()
 export class UnivModel {
     @Prop()
-    name: string;
+    nameEn: string;
 
     @Prop()
-    description: string;
+    nameSp: string;
+
+    @Prop()
+    descriptionEn: string;
+
+    @Prop()
+    descriptionSp: string;
 
     @Prop()
     location: string;

@@ -37,14 +37,4 @@ export class CoursesService {
         }
         return this.productModel.findByIdAndUpdate(id, obj, { new: true }).exec();
     }
-
-    async findByCategory(dto: FindProgramsDto) {
-        return this.productModel.aggregate([
-            {
-                $match: {
-                    universities: dto.category
-                }
-            }
-        ]).exec()
-    }
 }

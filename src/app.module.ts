@@ -14,6 +14,7 @@ import {ServeStaticModule} from "@nestjs/serve-static";
 import {path} from 'app-root-path'
 import {AdmissionModule} from "./admission/admission.module";
 import { RequestModule } from './request/request.module';
+import {ApplicationModule} from "./application/application.module";
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { RequestModule } from './request/request.module';
       WorkersModule,
       UnivModule,
       AdmissionModule,
+      ApplicationModule,
       ServeStaticModule.forRoot({
           rootPath: `${path}/client`,
           serveRoot: '/'

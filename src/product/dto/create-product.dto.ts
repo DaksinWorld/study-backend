@@ -1,14 +1,32 @@
-import { IsNumber, IsString } from "class-validator";
+import { IsString} from "class-validator";
 
 export class CreateProductDto {
   @IsString()
-  name: string;
+  programsEn: string
+
+  @IsString()
+  programsSp: string
+
+  @IsString()
+  degreeEn: string
+
+  @IsString()
+  degreeSp: string
+
+  @IsString()
+  fieldOfStudyEn: string
+
+  @IsString()
+  fieldOfStudySp: string
+
+  @IsString()
+  nameEn: string
+
+  @IsString()
+  nameSp: string
 
   @IsString()
   location: string;
-
-  @IsString()
-  description: string;
 
   @IsString()
   language: string;
@@ -18,15 +36,6 @@ export class CreateProductDto {
 
   @IsString()
   duration: string;
-
-  @IsString()
-  degree: string;
-
-  @IsString()
-  fieldOfStudy: string;
-
-  @IsString()
-  programs: string;
 
   @IsString()
   foundationCoursePrice: string;

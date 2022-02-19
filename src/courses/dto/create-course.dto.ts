@@ -2,7 +2,10 @@ import { IsNumber, IsString } from "class-validator";
 
 export class CreateCourseDto {
     @IsString()
-    name: string;
+    nameEn: string;
+
+    @IsString()
+    nameSp: string;
 
     @IsString()
     location: string;
@@ -11,13 +14,16 @@ export class CreateCourseDto {
     duration: number;
 
     @IsString()
-    fieldOfCourse: string;
+    fieldOfCourseEn: string;
 
     @IsString()
-    universities: string;
+    fieldOfCourseSp: string;
 
     @IsString()
-    cities: string;
+    universitiesEn: string;
+
+    @IsString()
+    universitiesSp: string;
 
     @IsString()
     price: string;

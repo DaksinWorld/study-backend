@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{430:function(e,n,o){"use strict";o.r(n);var r={props:["courses","sorted"]},t=o(13),component=Object(t.a)(r,(function(){var e=this,n=e.$createElement;return(e._self._c||n)("span",[e._v(e._s(e.sorted)+" courses was found in "+e._s(e.courses)+" courses")])}),[],!1,null,"dded1ad4",null);n.default=component.exports}}]);

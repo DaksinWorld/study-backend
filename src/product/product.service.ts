@@ -10,12 +10,8 @@ export class ProductService {
   constructor(@InjectModel(ProductModel.name) private readonly productModel: Model<ProductModel>) {
   }
 
-  async create(dto: CreateProductDto, images) {
-    const obj = {
-      images,
-      ...dto,
-    }
-    return this.productModel.create(obj);
+  async create(dto: CreateProductDto) {
+    return this.productModel.create(dto);
   }
 
   async getAll(){
@@ -26,20 +22,22 @@ export class ProductService {
     return this.productModel.findById(id).exec();
   }
 
-  /*async findByCategory(dto: FindByCategoryDto){
-    return this.productModel.find({fieldOfStudy: dto.fieldOfStudy, degree: dto.degree})
-  }*/
+  async findByCategory(dto: FindByCategoryDto){
+    return this.productModel.aggregate([
+      {
+        $match: {
+          nameEn: dto.program
+        }
+      }
+    ])
+  }
 
   async deleteById(id: string) {
     return this.productModel.findByIdAndDelete(id).exec();
   }
 
-  async updateById(id: string, dto: CreateProductDto, images) {
-    const obj = {
-      images,
-      ...dto,
-    }
-    return this.productModel.findByIdAndUpdate(id, obj, { new: true }).exec();
+  async updateById(id: string, dto: CreateProductDto) {
+    return this.productModel.findByIdAndUpdate(id, dto, { new: true }).exec();
   }
 
 }

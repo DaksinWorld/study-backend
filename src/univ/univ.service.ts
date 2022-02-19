@@ -29,6 +29,10 @@ export class UnivService {
         return this.univModel.findByIdAndDelete(id).exec();
     }
 
+    async findProgramByName() {
+
+    }
+
     async updateById(id: string, dto: CreateUnivDto, images) {
         const obj = {
             images,
